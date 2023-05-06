@@ -112,12 +112,25 @@ fun AlignYourBodyElement(text: Int , s: String){
 @Composable
 fun FavoriteCollectionsGrid(modifier: Modifier = Modifier){
     var favoriteCollectionsData = listOf(
-        AlignYourBodyData(R.mipmap.kuga,"kuga")
+        AlignYourBodyData(R.mipmap.kuga,"Kuga"),
+        AlignYourBodyData(R.mipmap.agtio,"Agito"),
+        AlignYourBodyData(R.mipmap.ryuki,"Ryuki"),
+        AlignYourBodyData(R.mipmap.faiz,"Faiz"),
+        AlignYourBodyData(R.mipmap.blade,"Blade"),
+        AlignYourBodyData(R.mipmap.hibiki,"Hibiki"),
+        AlignYourBodyData(R.mipmap.kabuto,"Kabuto"),
+        AlignYourBodyData(R.mipmap.deno,"Den-o"),
+        AlignYourBodyData(R.mipmap.kiva,"Kiva"),
+        AlignYourBodyData(R.mipmap.decade,"Decade")
     )
 
     LazyHorizontalGrid(
         rows = GridCells.Fixed(2),
-        modifier = modifier
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.height(200.dp)
+    //若不加最后这句最后界面有点点问题
     ) {
         items(favoriteCollectionsData){
             item->FavoriteCollectionCard(item.drawable,item.text)
@@ -137,17 +150,20 @@ fun FavoriteCollectionCard(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.width(192.dp)
+            modifier = Modifier.width(170.dp)
         ) {
             Image(
                 painter = painterResource(drawable),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.size(56.dp)
+                modifier = Modifier.size(100.dp)
             )
-            Text(
-                text = text
-            )
+            Row(modifier = Modifier.padding(start = 5.dp)) {
+                Text(
+                    text = text
+                )
+            }
+
         }
     }
 }
